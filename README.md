@@ -15,4 +15,4 @@ Usage
 
 Start a new container with a volume for your config files
 
-    docker run -d -v "$( pwd )/mybot:/app/ProfitTrailer" rafffael/profittrailer
+    docker run -d -v "$( pwd )/mybot:/app/ProfitTrailer" rafffael/profit-trailer
