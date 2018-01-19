@@ -16,3 +16,9 @@ Usage
 Start a new container with a volume for your config files
 
     docker run -d -v "$( pwd )/mybot:/app/ProfitTrailer" rafffael/profit-trailer
+
+Credit
+------
+
+Based on the work of Beemster, go check it out here
+https://github.com/beemster/profittrailer
