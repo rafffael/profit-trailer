@@ -17,6 +17,9 @@ Start a new container with a volume for your config files
 
     docker run -d -v "$( pwd )/mybot:/app/ProfitTrailer" rafffael/profit-trailer
 
+[![Docker Stars](https://img.shields.io/docker/stars/rafffael/profit-trailer.svg)](https://hub.docker.com/r/rafffael/profit-trailer/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/rafffael/profit-trailer.svg)](https://hub.docker.com/r/rafffael/profit-trailer/)
+
 Credit
 ------
 
