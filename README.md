@@ -19,9 +19,3 @@ Start a new container with a volume for your config files
 
 [![Docker Stars](https://img.shields.io/docker/stars/rafffael/profit-trailer.svg)](https://hub.docker.com/r/rafffael/profit-trailer/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rafffael/profit-trailer.svg)](https://hub.docker.com/r/rafffael/profit-trailer/)
-
-Credit
-------
-
-Based on the work of Beemster, go check it out here
-https://github.com/beemster/profittrailer
