@@ -22,11 +22,6 @@ cd ${PT_DIR} || {
 pcnt=$(/bin/ls -1 ${PT_DIR}/*.properties 2>/dev/null|/usr/bin/wc -l)
 [[ ${pcnt} -gt 0 ]] || {
   echo "No properties found, extracting..."; unzip -jo ${PT_ZIP} -d ${PT_DIR};
-  echo "Done! Now, edit your configuration files and reload the container."
-  exit -1;
-} || {
-  echo "Error: no properties found and could not properly unzip $PT_ZIP. Exiting.";
-  exit -1;
 }
 
 # start it
