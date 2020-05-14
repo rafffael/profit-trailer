@@ -1,6 +1,6 @@
 FROM openjdk:8-alpine
 
-ENV PT_VERSION=2.4.27
+ENV PT_VERSION=2.4.28
 ENV PT_DL=https://github.com/taniman/profit-trailer/releases/download/${PT_VERSION}/ProfitTrailer-${PT_VERSION}.zip
 
 VOLUME /app
