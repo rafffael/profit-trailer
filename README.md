@@ -24,16 +24,16 @@ Create new dir for ProfitTrailer files
 $ mkdir /var/opt/profittrailer1
 ```
 
-Copy updatePT file to new dir and chmod
+Copy update-pt.sh file to new dir and chmod
 
 ```bash
-$ chmod +x updatePT
+$ chmod +x update-pt.sh
 ```
 
-Run updatePT
+Run update-pt
 
 ```bash
-$ ./updatePT
+$ ./update-pt.sh
 ```
 
 Start a new container and point volume to new dir 
@@ -85,10 +85,10 @@ Stop Docker container
 $ docker stop profittrailer1
 ```
 
-Run updatePT
+Run update-pt
 
 ```bash
-$ ./updatePT
+$ ./update-pt.sh
 ```
 
 Start Docker container
