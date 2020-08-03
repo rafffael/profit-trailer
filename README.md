@@ -8,7 +8,7 @@ For more information about ProfitTrailer :
  - Official website : https://profittrailer.com
  - Wiki : https://wiki.profittrailer.io
  - Github : https://github.com/taniman/profit-trailer
- - Original: https://github.com/rafffael/profit-trailer
+ - Original Dockerfile: https://github.com/rafffael/profit-trailer
 
 ## Usage
 
