@@ -15,7 +15,8 @@ Usage
 
 Start a new container with a volume for your config files
 
-    docker run -d --name profittrailer -p 8081:8081 lucasconde/profit-trailer:latest
+    docker run -d --name profittrailer -p 8081:8081 lucasconde/profit-trailer:latest for production image
+    docker run -d --name profittrailer -p 8081:8081 lucasconde/profit-trailer:dev for development image
 
 [![Docker Stars](https://img.shields.io/docker/stars/lucasconde/profit-trailer.svg)](https://hub.docker.com/r/lucasconde/profit-trailer/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/lucasconde/profit-trailer.svg)](https://hub.docker.com/r/lucasconde/profit-trailer/)
