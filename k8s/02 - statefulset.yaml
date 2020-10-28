@@ -36,7 +36,9 @@ spec:
   - metadata:
       name: data
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: 
+        - "ReadWriteOnce"
+      storageClassName: local-storage
       resources:
         requests:
           storage: 5Gi
