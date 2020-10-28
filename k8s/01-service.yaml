@@ -9,8 +9,10 @@ metadata:
 spec:
   clusterIP: None
   ports:
-  - name: profit-trailer
+  - name: profit-trailer-http
     port: 80
+  - name: profit-trailer-https
+    port: 443
   selector:
     app: profit-trailer
     exchange: binance
