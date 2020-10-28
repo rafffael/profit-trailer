@@ -11,8 +11,10 @@ spec:
   ports:
   - name: profit-trailer-http
     port: 80
+    targetPort: 8081
   - name: profit-trailer-https
     port: 443
+    targetPort: 8081
   selector:
     app: profit-trailer
     exchange: binance
