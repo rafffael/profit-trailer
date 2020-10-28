@@ -5,4 +5,4 @@ services:
     build: .
     restart: always
     ports:
-      - "80:80/tcp"
+      - "8081:8081/tcp"
