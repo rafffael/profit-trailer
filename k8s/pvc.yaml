@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-profit-trailer
+  namespace: profit-trailer
+  labels:
+    app: profit-trailer
+    release: stable
+    environment: production
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: hostpath #do-block-storage
+  resources:
+    requests:
+      storage: 1Gi
