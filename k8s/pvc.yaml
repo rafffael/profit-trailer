@@ -10,7 +10,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  storageClassName: hostpath #do-block-storage
+  storageClassName: local-storage #do-block-storage
   resources:
     requests:
       storage: 1Gi
