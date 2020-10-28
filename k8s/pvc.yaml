@@ -13,4 +13,4 @@ spec:
   storageClassName: local-storage #do-block-storage
   resources:
     requests:
-      storage: 1Gi
+      storage: 5Gi
