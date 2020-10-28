@@ -2,17 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: profit-trailer
-  namespace: profit-trailer
+  namespace: pt-binance
   labels:
     app: profit-trailer
-    release: stable
-    environment: sandbox
+    exchange: binance
 spec:
-  type: ClusterIP
+  clusterIP: None
   ports:
   - name: profit-trailer
     port: 80
   selector:
     app: profit-trailer
-    release: stable
-    environment: sandbox
+    exchange: binance
