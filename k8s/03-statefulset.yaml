@@ -38,7 +38,7 @@ spec:
     spec:
       accessModes: 
         - "ReadWriteOnce"
-      storageClassName: local-storage
+      storageClassName: microk8s-hostpath
       resources:
         requests:
           storage: 5Gi
