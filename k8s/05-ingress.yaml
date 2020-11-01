@@ -11,7 +11,9 @@ spec:
     http:
       paths:
       - backend:
-          service.port.number: 8081
+          service:
+            port:
+              number: 8081
         path: /
         pathType: ImplementationSpecific
   tls:
