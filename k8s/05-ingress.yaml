@@ -5,6 +5,9 @@ metadata:
     cert-manager.io/issuer: ptcert-staging
   name: pt-binance-01
   namespace: pt-binance-01
+  labels:
+    app: profit-trailer
+    exchange: binance  
 spec:
   rules:
   - host: pt-binance-01.***REMOVED***
@@ -12,7 +15,7 @@ spec:
       paths:
       - backend:
           service:
-            name: pt-ingress
+            name: profit-trailer
             port:
               number: 8081
         path: /
