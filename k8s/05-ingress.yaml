@@ -2,12 +2,19 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/issuer: ptcert-prod
-  name: pt-binance
+    cert-manager.io/issuer: ptcert-staging
+  name: pt-binance-01
   namespace: pt-binance-01
 spec:
   rules:
-  - host: pt-binance-01.***REMOVED***
+  - host: pt-binance.***REMOVED***
+    http:
+      paths:
+      - backend:
+          serviceName: ingress-ptbackend
+          servicePort: 8081
+        path: /
+        pathType: ImplementationSpecific
   tls:
   - hosts:
     - pt-binance-01.***REMOVED***
