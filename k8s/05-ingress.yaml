@@ -10,7 +10,7 @@ spec:
   - host: pt-binance-01.***REMOVED***
   tls:
   - hosts:
-    - pt-binance.***REMOVED***
+    - pt-binance-01.***REMOVED***
     secretName: tls-pt-binance-ingress
 status:
   loadBalancer:
