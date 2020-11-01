@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: profit-trailer
-  namespace: pt-binance
+  namespace: pt-binance-01
 spec:
   serviceName: "profit-trailer"
   replicas: 1

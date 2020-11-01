@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: profit-trailer
-  namespace: pt-binance
+  namespace: pt-binance-01
   labels:
     app: profit-trailer
     exchange: binance

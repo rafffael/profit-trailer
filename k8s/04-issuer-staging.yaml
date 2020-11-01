@@ -2,7 +2,7 @@ apiVersion: cert-manager.io/v1alpha3
 kind: Issuer
 metadata:
   name: letsencrypt-staging
-  namespace: pt-binance
+  namespace: pt-binance-01
 spec:
   acme:
     # The ACME server URL

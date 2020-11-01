@@ -3,4 +3,15 @@ kind: ConfigMap
 metadata:
   name: {{ .Release.Name }}-configmap
 data:
-  myvalue: "Hello World"
+    namespace: {{ .Values.namespace }}
+    exchange: {{ .Values.exchange }}
+  
+    ingress:
+    enabled: false
+    hosts:
+        - host:  {{ .Values.hosts }}
+        paths: []
+    tls: []
+        - secretName: {{ .Values.secretName }}
+        hosts:
+            -  {{ .Values.hosts }}
