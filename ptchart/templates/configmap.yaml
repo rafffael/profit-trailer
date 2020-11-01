@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: mychart-configmap
 data:
-  myvalue: "Hello Worldh
+  myvalue: "Hello World"
