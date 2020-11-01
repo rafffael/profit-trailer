@@ -12,6 +12,7 @@ spec:
       paths:
       - backend:
           service:
+            name: pt-ingress
             port:
               number: 8081
         path: /
