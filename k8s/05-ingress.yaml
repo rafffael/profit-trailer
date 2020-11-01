@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/issuer: ptcert-prod
+  name: pt-binance
+  namespace: pt-binance-01
+spec:
+  rules:
+  - host: pt-binance-01.***REMOVED***
+  tls:
+  - hosts:
+    - pt-binance.***REMOVED***
+    secretName: tls-pt-binance-ingress
+status:
+  loadBalancer:
+    ingress:
+    - ip: 127.0.0.1

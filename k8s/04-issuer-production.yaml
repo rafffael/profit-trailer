@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1alpha3
 kind: Issuer
 metadata:
-  name: letsencrypt-prod
+  name: ptcert-prod
   namespace: pt-binance-01
 spec:
   acme:
@@ -11,9 +11,8 @@ spec:
     email: ***REMOVED***
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: letsencrypt-prod
+      name: ptcert-prod
     # Enable the HTTP-01 challenge provider
     solvers:
     - http01:
-        ingress: 
-          class: nginx
+        ingress: []

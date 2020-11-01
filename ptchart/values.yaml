@@ -14,7 +14,7 @@ ingress:
     - host: profit-trailer.***REMOVED***
       paths: []
   tls: []
-    - secretName: ´profit-trailer-tls
+    - secretName: tls-pt-binance-ingress
       hosts:
         - profit-trailer.***REMOVED***
 
