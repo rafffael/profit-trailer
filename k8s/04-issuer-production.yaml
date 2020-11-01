@@ -15,4 +15,5 @@ spec:
     # Enable the HTTP-01 challenge provider
     solvers:
     - http01:
-        ingress: []
+        ingress: 
+          class: nginx
