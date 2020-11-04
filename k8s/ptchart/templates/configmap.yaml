@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
+  namespace: {{ .Release.Namespace }}
   name: {{ .Release.Name }}-configmap
 data:
     namespace: {{ .Values.namespace }}

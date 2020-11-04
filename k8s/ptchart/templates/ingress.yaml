@@ -8,6 +8,7 @@ apiVersion: extensions/v1beta1
 {{- end }}
 kind: Ingress
 metadata:
+  namespace: {{ .Release.Namespace }}
   name: {{ $fullName }}
   labels:
     {{- include "ptchart.labels" . | nindent 4 }}

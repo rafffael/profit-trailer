@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: {{ .Release.Namespace }}
   name: {{ include "ptchart.fullname" . }}
   labels:
     {{- include "ptchart.labels" . | nindent 4 }}
