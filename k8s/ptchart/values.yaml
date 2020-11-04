@@ -13,7 +13,7 @@ ingress:
   hosts:
     - host: profit-trailer.domain.com
       paths: []
-  tls: []
+  tls: 
     - secretName: tls-pt-binance-ingress
       hosts:
         - profit-trailer.domain.com
