@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: profit-trailer
+  namespace: pt-binance-01
+spec:
+  serviceName: "profit-trailer"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profit-trailer
+      exchange: binance
+  template:
+    metadata:
+      labels:
+        app: profit-trailer
+        exchange: binance
+    spec:
+      containers:
+      - name: profit-trailer
+        image: lucasconde/profit-trailer:latest
+        resources:
+          requests:
+            memory: "128M"
+            cpu: "200m"
+          limits:
+            memory: "768M"
+            cpu: "1500m"  
+        ports:
+        - containerPort: 80
+          name: bot
+        volumeMounts:
+        - name: data
+          mountPath: /app/ProfitTrailer/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: 
+        - "ReadWriteOnce"
+      storageClassName: microk8s-hostpath
+      resources:
+        requests:
+          storage: 5Gi
