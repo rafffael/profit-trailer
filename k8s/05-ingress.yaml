@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    cert-manager.io/issuer: ptcert-staging
+    cert-manager.io/issuer: ptcert-prod
   name: pt-binance-01
   namespace: pt-binance-01
   labels:
@@ -15,7 +15,7 @@ spec:
       paths:
       - backend:
           service:
-            name: profit-trailer
+            name: ingress-f7c862d252378d326eb442db
             port:
               number: 8081
         path: /
