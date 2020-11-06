@@ -3,42 +3,32 @@
 # Declare variables to be passed into your templates.
 
 namespace: profit-trailer
+appName: profit-trailer
 exchange: binance
 
+certificate:
+  env: staging
+  email: email@dot.com
+
+service:
+  name: profit-trailer
+
 ingress:
-  enabled: false
+  name: profit-trailer
   annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: profit-trailer.***REMOVED***
-      paths: []
-  tls: []
-    - secretName: tls-pt-binance-ingress
-      hosts:
-        - profit-trailer.***REMOVED***
+  host: profit-trailer.domain.com
+    
+containers:
+  image: lucasconde/profit-trailer:latest
+resources: 
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 1000m
+    memory: 768Mi
 
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #   cpu: 100m
-  #   memory: 128Mi
-  # requests:
-  #   cpu: 100m
-  #   memory: 128Mi
-
-# autoscaling:
-#   enabled: false
-#   minReplicas: 1
-#   maxReplicas: 100
-#   targetCPUUtilizationPercentage: 80
-#   # targetMemoryUtilizationPercentage: 80
-
-nodeSelector: {}
-
-tolerations: []
-
-affinity: {}
+volumeClaim:
+  storageClassName: microk8s-hostpath
+  requests:
+    storage: 5Gi
