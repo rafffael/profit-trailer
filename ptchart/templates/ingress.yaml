@@ -28,7 +28,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: tls-{{ .Values.ingress.name }}-ingress
+    secretName: tls-{{ .Values.ingress.name }}-{{ .Values.certificate.env }}-ingress
 status:
   loadBalancer:
     ingress: 
