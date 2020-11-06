@@ -22,11 +22,13 @@ Start a new container with a volume for your config files
 - Docker
     
     docker run -d --name profit-trailer -p 8081:8081 lucasconde/profit-trailer:latest for latest production image
+    
     docker run -d --name profit-trailer -p 8081:8081 lucasconde/profit-trailer:x.x.x for specific image
 
 - Kubernetes
     
     If you already have created the namespace remove --create-namespace
+    
     helm install --dry-run --debug --namespace <NAMESPACE_NAME> --create-namespace profit-trailer ./ptchart/ --set ingress.host=<YOUR_DOMAIN>
 
     Check values.yaml for default/possible values, by default certificate will be created using Let's Encrypt staging.
