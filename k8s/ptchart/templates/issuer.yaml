@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1alpha3
+kind: Issuer
+metadata:
+  name: pt-certificate-{{ .Values.certificate.env }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  acme:
+    # The ACME server URL
+    {{- if eq .Values.certificate.env "staging" }}
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    {{- else if eq .Values.certificate.env "production" }}
+    server: https://acme-v02.api.letsencrypt.org/directory
+    {{- end }}
+    # Email address used for ACME registration
+    email: {{ .Values.certificate.email }} 
+    # Name of a secret used to store the ACME account private key
+    privateKeySecretRef:
+      name: pt-certificate-{{ .Values.certificate.env }}
+    # Enable the HTTP-01 challenge provider
+    solvers:
+    - http01:
+        ingress: 
+          class: nginx

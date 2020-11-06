@@ -3,25 +3,32 @@
 # Declare variables to be passed into your templates.
 
 namespace: profit-trailer
+appName: profit-trailer
 exchange: binance
 
-ingress:
-  enabled: false
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
-    - host: profit-trailer.domain.com
-      paths: []
-  tls: 
-    - secretName: tls-pt-binance-ingress
-      hosts:
-        - profit-trailer.domain.com
+certificate:
+  env: staging
+  email: email@dot.com
 
+service:
+  name: profit-trailer
+
+ingress:
+  name: profit-trailer
+  annotations: {}
+  host: profit-trailer.domain.com
+    
+containers:
+  image: lucasconde/profit-trailer:latest
 resources: 
-  limits:
+  requests:
     cpu: 100m
     memory: 128Mi
-  requests:
+  limits:
     cpu: 1000m
     memory: 768Mi
+
+volumeClaim:
+  storageClassName: microk8s-hostpath
+  requests:
+    storage: 5Gi

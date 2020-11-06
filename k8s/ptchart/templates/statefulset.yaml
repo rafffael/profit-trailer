@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: profit-trailer-workload
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: "profit-trailer"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.appName }}
+      exchange: {{ .Values.exchange }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appName }}
+        exchange: {{ .Values.exchange }}
+    spec:
+      containers:
+      - name: profit-trailer
+        image: {{ .Values.containers.image }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.requests.memory }} 
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.resources.limits.cpu }} 
+        ports:
+        - containerPort: 80
+          name: pt-port
+        volumeMounts:
+        - name: data
+          mountPath: /app/ProfitTrailer/data
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: 
+        - "ReadWriteOnce"
+      storageClassName: {{ .Values.volumeClaim.storageClassName }} 
+      resources:
+        requests:
+          storage: {{ .Values.volumeClaim.requests.storage }}
