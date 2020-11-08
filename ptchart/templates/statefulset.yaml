@@ -8,13 +8,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: {{ .Values.label.app }}
       exchange: {{ .Values.exchange }}
+      environment: {{ .Values.environment }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: {{ .Values.label.app }}
         exchange: {{ .Values.exchange }}
+        environment: {{ .Values.environment }}
     spec:
       containers:
       - name: profit-trailer

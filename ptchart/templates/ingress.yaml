@@ -11,8 +11,9 @@ metadata:
   name: {{ .Values.ingress.name }}-ingress
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.appName }}
-    exchange: {{ .Values.exchange }} 
+    app: {{ .Values.label.app }}
+    exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}

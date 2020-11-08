@@ -4,8 +4,9 @@ metadata:
   name: {{ .Values.service.name }}-service
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.appName }}
+    app: {{ .Values.label.app }}
     exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
   ports:
@@ -13,5 +14,6 @@ spec:
     port: 8081
     targetPort: 8081
   selector:
-    app: {{ .Values.appName }}
+    app: {{ .Values.label.app }}
     exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
