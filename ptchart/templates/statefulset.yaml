@@ -1,20 +1,24 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: profit-trailer-workload
+  name: profit-trailer-{{ .Values.environment }}-{{ .Values.botId }}-workload
   namespace: {{ .Release.Namespace }}
 spec:
   serviceName: "profit-trailer"
   replicas: 1
   selector:
     matchLabels:
-      app: {{ .Values.appName }}
+      app: {{ .Values.app }}
       exchange: {{ .Values.exchange }}
+      environment: {{ .Values.environment }}
+      botId: {{ .Values.botId | quote }}
   template:
     metadata:
       labels:
-        app: {{ .Values.appName }}
+        app: {{ .Values.app }}
         exchange: {{ .Values.exchange }}
+        environment: {{ .Values.environment }}
+        botId: {{ .Values.botId | quote }}
     spec:
       containers:
       - name: profit-trailer
