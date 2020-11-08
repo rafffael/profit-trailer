@@ -3,10 +3,10 @@
 # Declare variables to be passed into your templates.
 
 namespace: profit-trailer
-label:
-  app: profit-trailer
-  exchange: binance
-  environment: test
+app: profit-trailer
+botId: "01"
+exchange: binance
+environment: test
 
 certificate:
   env: staging
