@@ -1,11 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}-service
+  name: {{ .Values.service.name }}-{{ .Values.environment }}-{{ .Values.botId }}-service
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.appName }}
+    app: {{ .Values.app }}
     exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
+    botId: {{ .Values.botId | quote }}
 spec:
   type: ClusterIP
   ports:
@@ -13,5 +15,7 @@ spec:
     port: 8081
     targetPort: 8081
   selector:
-    app: {{ .Values.appName }}
+    app: {{ .Values.app }}
     exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
+    botId: {{ .Values.botId | quote }}

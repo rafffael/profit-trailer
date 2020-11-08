@@ -3,16 +3,18 @@ kind: Ingress
 metadata:
   annotations:
     {{- if eq .Values.certificate.env "staging" }}
-    cert-manager.io/issuer: pt-certificate-staging
+    cert-manager.io/issuer: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     {{- else if eq .Values.certificate.env "production" }}
-    cert-manager.io/issuer: pt-certificate-production
+    cert-manager.io/issuer: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     {{- end }}  
     kubernetes.io/ingress.class: nginx
-  name: {{ .Values.ingress.name }}-ingress
+  name: {{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
   namespace: {{ .Release.Namespace }}
   labels:
-    app: {{ .Values.appName }}
-    exchange: {{ .Values.exchange }} 
+    app: {{ .Values.app }}
+    exchange: {{ .Values.exchange }}
+    environment: {{ .Values.environment }}
+    botId: {{ .Values.botId | quote }}
 spec:
   rules:
   - host: {{ .Values.ingress.host }}
@@ -20,7 +22,7 @@ spec:
       paths:
       - backend:
           service:
-            name: {{ .Values.service.name }}-service
+            name: {{ .Values.service.name }}-{{ .Values.environment }}-{{ .Values.botId }}-service
             port:
               number: 8081
         path: /
@@ -28,7 +30,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: tls-{{ .Values.ingress.name }}-{{ .Values.certificate.env }}-ingress
+    secretName: tls-{{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}-ingress
 status:
   loadBalancer:
     ingress: 
