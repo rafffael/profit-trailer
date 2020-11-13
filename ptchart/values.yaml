@@ -31,6 +31,6 @@ resources:
     memory: 768Mi
 
 volumeClaim:
-  storageClassName: microk8s-hostpath
+  storageClassName: local-hostpath
   requests:
     storage: 5Gi
