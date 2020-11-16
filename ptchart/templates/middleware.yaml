@@ -1,0 +1,13 @@
+# {{- if eq .Values.ingress.class "traefik" }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: pt-header
+spec:
+  headers:
+    frameDeny: true
+    sslRedirect: true
+    accessControlMaxAge: 63072000
+    stsIncludeSubdomains: true
+    stsPreload: true
+# {{- end }}
