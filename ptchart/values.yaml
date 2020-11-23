@@ -17,6 +17,7 @@ service:
 
 ingress:
   name: profit-trailer
+  class: nginx
   annotations: {}
   host: profit-trailer.domain.com
     
@@ -31,6 +32,6 @@ resources:
     memory: 768Mi
 
 volumeClaim:
-  storageClassName: microk8s-hostpath
+  storageClassName: local-path
   requests:
     storage: 5Gi
