@@ -20,9 +20,9 @@ ingress:
   class: nginx
   nginx:
     annotations:
-      redirectHttps: true
-      hsts: true
-      hstsSubdomain: true
+      redirectHttps: "true"
+      hsts: "true"
+      hstsSubdomain: "true"
     header: {}
   host: profit-trailer.domain.com
     
