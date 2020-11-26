@@ -21,8 +21,8 @@ ingress:
   nginx:
     annotations:
       redirectHttps: true
-      hsts: true
-      hstsSubdomain: true
+      hsts: false
+      hstsSubdomain: false
     header: {}
   host: profit-trailer.domain.com
     
