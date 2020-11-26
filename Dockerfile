@@ -10,4 +10,4 @@ ADD ${PT_DL} /opt
 ADD run-profit-trailer.sh /run-profit-trailer.sh
 
 WORKDIR /app
-CMD ["/bin/sh", "/run-profit-trailer.sh"]
+CMD ["/bin/sh", "/run-profit-trailer.sh"] 
