@@ -9,5 +9,5 @@ EXPOSE 8081
 ADD ${PT_DL} /opt
 ADD run-profit-trailer.sh /run-profit-trailer.sh
 
-WORKDIR /app
+WORKDIR /app 
 CMD ["/bin/sh", "/run-profit-trailer.sh"]
