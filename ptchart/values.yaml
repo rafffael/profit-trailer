@@ -18,7 +18,12 @@ service:
 ingress:
   name: profit-trailer
   class: nginx
-  annotations: {}
+  nginx:
+    annotations:
+      redirect-https: true
+      hsts: true
+      hsts-subdomain: true
+    header: {}
   host: profit-trailer.domain.com
     
 containers:

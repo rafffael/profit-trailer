@@ -8,6 +8,11 @@ metadata:
     cert-manager.io/issuer: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     {{- end }}  
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
+    {{- if eq .Values.ingress.class "nginx" }}
+    nginx.org/redirect-to-https: {{ .Values.ingress.nginx.annotations.redirect-https }}
+    nginx.org/hsts: {{ .Values.ingress.nginx.annotations.hsts }}
+    nginx.org/hsts-include-subdomains: {{ .Values.ingress.nginx.annotations.hsts-subdomain }}
+    {{- end }}
   name: {{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
   namespace: {{ .Release.Namespace }}
   labels:
