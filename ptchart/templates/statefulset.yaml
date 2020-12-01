@@ -10,6 +10,7 @@ spec:
     matchLabels:
       app: {{ .Values.app }}
       exchange: {{ .Values.exchange }}
+      market: {{ .Values.market }}
       environment: {{ .Values.environment }}
       botId: {{ .Values.botId | quote }}
   template:
@@ -17,6 +18,7 @@ spec:
       labels:
         app: {{ .Values.app }}
         exchange: {{ .Values.exchange }}
+        market: {{ .Values.market }}
         environment: {{ .Values.environment }}
         botId: {{ .Values.botId | quote }}
     spec:

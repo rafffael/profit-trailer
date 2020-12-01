@@ -6,6 +6,7 @@ namespace: profit-trailer
 app: profit-trailer
 botId: "01"
 exchange: binance
+market: btc
 environment: test
 
 certificate:

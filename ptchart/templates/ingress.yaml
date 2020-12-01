@@ -18,6 +18,7 @@ metadata:
   labels:
     app: {{ .Values.app }}
     exchange: {{ .Values.exchange }}
+    market: {{ .Values.market }}
     environment: {{ .Values.environment }}
     botId: {{ .Values.botId | quote }}
 spec:
