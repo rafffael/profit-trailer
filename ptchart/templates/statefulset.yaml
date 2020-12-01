@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: profit-trailer-{{ .Values.environment }}-{{ .Values.botId }}-workload
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-workload
   namespace: {{ .Release.Namespace }}
 spec:
   serviceName: "profit-trailer"
