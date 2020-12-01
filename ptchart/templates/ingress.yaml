@@ -9,9 +9,9 @@ metadata:
     {{- end }}  
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
     {{- if eq .Values.ingress.class "nginx" }}
-    nginx.org/redirect-to-https: {{ .Values.ingress.nginx.annotations.redirectHttps }}
-    nginx.org/hsts: {{ .Values.ingress.nginx.annotations.hsts }}
-    nginx.org/hsts-include-subdomains: {{ .Values.ingress.nginx.annotations.hstsSubdomain }}
+    nginx.org/redirect-to-https: {{ .Values.ingress.nginx.annotations.redirectHttps | quote }}
+    nginx.org/hsts: {{ .Values.ingress.nginx.annotations.hsts | quote }}
+    nginx.org/hsts-include-subdomains: {{ .Values.ingress.nginx.annotations.hstsSubdomain | quote }}
     {{- end }}
   name: {{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
   namespace: {{ .Release.Namespace }}
