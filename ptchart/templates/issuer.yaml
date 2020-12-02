@@ -1,7 +1,7 @@
 apiVersion: cert-manager.io/v1alpha3
 kind: Issuer
 metadata:
-  name: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
+  name: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
   namespace: {{ .Release.Namespace }}
 spec:
   acme:
@@ -15,7 +15,7 @@ spec:
     email: {{ .Values.certificate.email }} 
     # Name of a secret used to store the ACME account private key
     privateKeySecretRef:
-      name: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
+      name: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     # Enable the HTTP-01 challenge provider
     solvers:
     - http01:

@@ -2,18 +2,18 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    {{- if eq .Values.certificate.env "staging" }}
-    cert-manager.io/issuer: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
-    {{- else if eq .Values.certificate.env "production" }}
-    cert-manager.io/issuer: pt-certificate-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
-    {{- end }}  
+    cert-manager.io/issuer: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
     {{- if eq .Values.ingress.class "nginx" }}
     nginx.org/redirect-to-https: {{ .Values.ingress.nginx.annotations.redirectHttps | quote }}
     nginx.org/hsts: {{ .Values.ingress.nginx.annotations.hsts | quote }}
     nginx.org/hsts-include-subdomains: {{ .Values.ingress.nginx.annotations.hstsSubdomain | quote }}
     {{- end }}
-  name: {{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
+  {{- if eq .Values.ingress.name "-" }}
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
+  {{- else }}
+  name: {{ .Values.ingress.name }}
+  {{- end }}
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ .Values.app }}
@@ -28,7 +28,11 @@ spec:
       paths:
       - backend:
           service:
-            name: {{ .Values.service.name }}-{{ .Values.environment }}-{{ .Values.botId }}-service
+            {{- if eq .Values.ingress.name "-" }}
+            name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-service
+            {{- else }}
+            name: {{ .Values.service.name }}
+            {{- end }}
             port:
               number: 8081
         path: /
@@ -36,7 +40,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: tls-{{ .Values.ingress.name }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}-ingress
+    secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
 status:
   loadBalancer:
     ingress: 

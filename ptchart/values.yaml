@@ -1,43 +1,74 @@
 # Default values for ptchart.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+# Values that are have values equal - means that the name will be the concatenation of exchange, market and bot id
+# Ingress example:
+# exchange-market-environment-botId => binance-btc-prod-01-ingress
 
+# Default namespace
 namespace: profit-trailer
+# Application name
 app: profit-trailer
+# Bot id
 botId: "01"
+# Exchange being used by the bot
 exchange: binance
+# Market being used by the bot
 market: btc
+# Environment that the bot is running
 environment: test
 
+# SSL certificate
 certificate:
+  # SSL certificate for staging, to be used while testing. Possible values are production,staging
   env: staging
+  # The email address that should receive emails from Lets Encrypt
   email: email@dot.com
 
+# Service to expose the port
 service:
-  name: profit-trailer
+  # Service name, change - to override the name.
+  name: "-"
 
+# Service to expose the port
+statefulset:
+  # Statefulset name, change - to override the name.
+  name: "-"
+
+# Ingress used to expose the application outside
 ingress:
-  name: profit-trailer
+  # Name of the ingress, change - to override the name.
+  name: "-"
+  # Ingress class used by K8s
   class: nginx
+  # Specific nginx configurations
   nginx:
     annotations:
+      # Always redirect to https
       redirectHttps: true
+      # Enable HSTS
       hsts: false
+      # Also enable HSTS to subdomains
       hstsSubdomain: false
     header: {}
+  # Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
   host: profit-trailer.domain.com
     
 containers:
+  # Container image for Profit Trailer
   image: lucasconde/profit-trailer:latest
 resources: 
+  # Minimum requirements for Profit Trailer to run
   requests:
     cpu: 100m
     memory: 128Mi
+  # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 1000m
     memory: 768Mi
 
+# Volume claim to be used
 volumeClaim:
-  storageClassName: local-path
+  # Define the storage class to be used when creating the PVC
+  storageClassName: longhorn
+  # Size of the storage that will be allocated
   requests:
     storage: 5Gi
