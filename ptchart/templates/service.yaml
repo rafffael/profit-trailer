@@ -1,11 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.service.name }}-{{ .Values.environment }}-{{ .Values.botId }}-service
+  {{- if eq .Values.service.name "-" }}
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-service
+  {{- else }}
+  name: {{ .Values.service.name }}
+  {{- end }}
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ .Values.app }}
     exchange: {{ .Values.exchange }}
+    market: {{ .Values.market }}
     environment: {{ .Values.environment }}
     botId: {{ .Values.botId | quote }}
 spec:
@@ -17,5 +22,6 @@ spec:
   selector:
     app: {{ .Values.app }}
     exchange: {{ .Values.exchange }}
+    market: {{ .Values.market }}
     environment: {{ .Values.environment }}
     botId: {{ .Values.botId | quote }}

@@ -1,7 +1,11 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: profit-trailer-{{ .Values.environment }}-{{ .Values.botId }}-workload
+  {{- if eq .Values.statefulset.name "-" }}
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-workload
+  {{- else }}
+  name: {{ .Values.statefulset.name }}
+  {{- end }}
   namespace: {{ .Release.Namespace }}
 spec:
   serviceName: "profit-trailer"
@@ -10,6 +14,7 @@ spec:
     matchLabels:
       app: {{ .Values.app }}
       exchange: {{ .Values.exchange }}
+      market: {{ .Values.market }}
       environment: {{ .Values.environment }}
       botId: {{ .Values.botId | quote }}
   template:
@@ -17,6 +22,7 @@ spec:
       labels:
         app: {{ .Values.app }}
         exchange: {{ .Values.exchange }}
+        market: {{ .Values.market }}
         environment: {{ .Values.environment }}
         botId: {{ .Values.botId | quote }}
     spec:
