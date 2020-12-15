@@ -65,4 +65,5 @@ volumeClaim:
   storageClassName: longhorn
   # Size of the storage that will be allocated
   requests:
-    storage: 5Gi
+    dataStorage: 5Gi
+    logStorage: 5Gi

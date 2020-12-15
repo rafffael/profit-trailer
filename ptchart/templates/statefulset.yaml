@@ -42,6 +42,8 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /app/ProfitTrailer/data
+        - name: log
+          mountPath: /app/ProfitTrailer/logs
   volumeClaimTemplates:
   - metadata:
       name: data
@@ -51,4 +53,13 @@ spec:
       storageClassName: {{ .Values.volumeClaim.storageClassName }} 
       resources:
         requests:
-          storage: {{ .Values.volumeClaim.requests.storage }}
+          storage: {{ .Values.volumeClaim.requests.dataStorage }}
+  - metadata:
+      name: log
+    spec:
+      accessModes: 
+        - "ReadWriteOnce"
+      storageClassName: {{ .Values.volumeClaim.storageClassName }} 
+      resources:
+        requests:
+          storage: {{ .Values.volumeClaim.requests.logStorage }}
