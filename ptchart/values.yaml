@@ -41,13 +41,7 @@ ingress:
   class: nginx
   # Specific nginx configurations
   nginx:
-    annotations:
-      # Always redirect to https
-      redirectHttps: true
-      # Enable HSTS
-      hsts: false
-      # Also enable HSTS to subdomains
-      hstsSubdomain: false
+    annotations: {}
     header: {}
   # Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
   host: profit-trailer.domain.com
