@@ -8,7 +8,7 @@ namespace: profit-trailer
 # Application name
 app: profit-trailer
 # Bot id
-botId: "01"
+botId: "001"
 # Exchange being used by the bot
 exchange: binance
 # Market being used by the bot
@@ -52,8 +52,8 @@ containers:
 resources: 
   # Minimum requirements for Profit Trailer to run
   requests:
-    cpu: 200m
-    memory: 128Mi
+    cpu: 300m
+    memory: 256Mi
   # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 700m
@@ -62,8 +62,10 @@ resources:
 # Volume claim to be used
 volumeClaim:
   # Define the storage class to be used when creating the PVC
-  storageClassName: longhorn
+  storageClassName: 
+    data: longhorn-pt
+    log: longhorn
   # Size of the storage that will be allocated
   requests:
-    dataStorage: 5Gi
-    logStorage: 5Gi
+    dataStorage: 2Gi
+    logStorage: 2Gi

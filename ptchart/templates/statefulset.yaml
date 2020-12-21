@@ -50,7 +50,7 @@ spec:
     spec:
       accessModes: 
         - "ReadWriteOnce"
-      storageClassName: {{ .Values.volumeClaim.storageClassName }} 
+      storageClassName: {{ .Values.volumeClaim.storageClassName.data }} 
       resources:
         requests:
           storage: {{ .Values.volumeClaim.requests.dataStorage }}
@@ -59,7 +59,7 @@ spec:
     spec:
       accessModes: 
         - "ReadWriteOnce"
-      storageClassName: {{ .Values.volumeClaim.storageClassName }} 
+      storageClassName: {{ .Values.volumeClaim.storageClassName.log }} 
       resources:
         requests:
           storage: {{ .Values.volumeClaim.requests.logStorage }}
