@@ -4,11 +4,6 @@ metadata:
   annotations:
     cert-manager.io/issuer: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
-    {{- if eq .Values.ingress.class "nginx" }}
-    nginx.org/redirect-to-https: {{ .Values.ingress.nginx.annotations.redirectHttps | quote }}
-    nginx.org/hsts: {{ .Values.ingress.nginx.annotations.hsts | quote }}
-    nginx.org/hsts-include-subdomains: {{ .Values.ingress.nginx.annotations.hstsSubdomain | quote }}
-    {{- end }}
   {{- if eq .Values.ingress.name "-" }}
   name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
   {{- else }}
