@@ -18,6 +18,8 @@ environment: test
 
 # SSL certificate
 certificate:
+  # Indicates if issuer is ClusterIssuer or Issuer (namespaced)
+  issuer: "cluster"
   # SSL certificate for staging, to be used while testing. Possible values are production,staging
   env: staging
   # The email address that should receive emails from Lets Encrypt
