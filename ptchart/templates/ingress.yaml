@@ -2,7 +2,11 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
+    {{- if eq .Values.certificate.issuer "namespaced" }}
     cert-manager.io/issuer: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
+    {{- else eq Values.certificate.issuer "cluster" }}
+    cert-manager.io/issuer: letsencrypt-{{ .Values.certificate.env }}
+    {{- end }}
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
   {{- if eq .Values.ingress.name "-" }}
   name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
