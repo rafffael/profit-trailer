@@ -1,4 +1,4 @@
-{{- if .Values.issuer "namespaced" }}
+{{- if eq .Values.certificate.issuer "namespaced" }}
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
@@ -22,7 +22,7 @@ spec:
     - http01:
         ingress: 
           class: {{ .Values.ingress.class }}          
-{{- else }}          
+{{- else if eq .Values.certificate.issuer "cluster"}}          
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
