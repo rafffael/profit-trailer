@@ -16,10 +16,7 @@ spec:
       exchange: {{ .Values.exchange }}
       market: {{ .Values.market }}
       environment: {{ .Values.environment }}
-      botId: {{ .Values.botId | quote }}
-      {{- if eq .Values.certificate.issuer "cluster" }}
-      certificate: "\"use-http01-solver\": \"true\""
-      {{- end }}      
+      botId: {{ .Values.botId | quote }}   
   template:
     metadata:
       labels:
@@ -28,6 +25,9 @@ spec:
         market: {{ .Values.market }}
         environment: {{ .Values.environment }}
         botId: {{ .Values.botId | quote }}
+        {{- if eq .Values.certificate.issuer "cluster" }}
+        certificate: "\"use-http01-solver\": \"true\""
+        {{- end }}   
     spec:
       containers:
       - name: profit-trailer
