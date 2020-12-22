@@ -23,7 +23,6 @@ spec:
         ingress: 
           class: {{ .Values.ingress.class }}          
 {{- else }}          
-{{- if eq .Values.issuer "cluster" }}
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
