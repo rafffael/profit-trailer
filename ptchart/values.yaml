@@ -52,12 +52,16 @@ containers:
 resources: 
   # Minimum requirements for Profit Trailer to run
   requests:
-    cpu: 300m
+    cpu: 200m
     memory: 256Mi
   # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 700m
-    memory: 768Mi
+    memory: 650Mi
+  test:
+    limits:
+      cpu: 500m
+      memory: 650Mi
 
 # Volume claim to be used
 volumeClaim:
