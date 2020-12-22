@@ -27,7 +27,7 @@ spec:
         botId: {{ .Values.botId | quote }}
         {{- if eq .Values.certificate.issuer "cluster"}}
         certificate: "use-http01-solver": "true" 
-        {{ - end }}
+        {{- end }}
     spec:
       containers:
       - name: profit-trailer
