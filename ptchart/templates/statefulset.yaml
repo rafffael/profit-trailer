@@ -18,7 +18,7 @@ spec:
       environment: {{ .Values.environment }}
       botId: {{ .Values.botId | quote }}
       {{- if eq .Values.certificate.issuer "cluster" }}
-      certificate: "use-http01-solver": "true" 
+      certificate: "\"use-http01-solver\": \"true\""
       {{- end }}      
   template:
     metadata:
