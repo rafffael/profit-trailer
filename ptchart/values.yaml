@@ -59,11 +59,11 @@ resources:
   # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 700m
-    memory: 650Mi
+    memory: 1024Mi
   test:
     limits:
       cpu: 500m
-      memory: 650Mi
+      memory: 768Mi
 
 # Volume claim to be used
 volumeClaim:
