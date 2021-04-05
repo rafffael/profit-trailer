@@ -8,7 +8,6 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.certificate.env }}
     {{- end }}
     {{- if ne .Values.ingress.http.path "/" }}
-    nginx.ingress.kubernetes.io/app-root: {{ .Values.ingress.http.path }}
     nginx.ingress.kubernetes.io/rewrite-target: /
     {{- end }}
 
