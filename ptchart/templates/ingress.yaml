@@ -9,7 +9,7 @@ metadata:
     {{- end }}
     {{- if ne .Values.ingress.http.path "/" }}
     nginx.ingress.kubernetes.io/app-root: {{ .Values.ingress.http.path }}
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /
     {{- end }}
 
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
