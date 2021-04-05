@@ -42,7 +42,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: letsencrypt-{{ .Values.certificate.env }}-account-key
+    secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}key
 status:
   loadBalancer:
     ingress: 
