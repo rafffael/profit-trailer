@@ -48,5 +48,5 @@ spec:
           class: {{ .Values.ingress.class }}
       selector:
         matchLabels:
-          "use-http01-solver": "true"          
+          use-http01-solver: "true"          
 {{- end }}   

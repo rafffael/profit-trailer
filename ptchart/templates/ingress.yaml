@@ -21,7 +21,7 @@ metadata:
     environment: {{ .Values.environment }}
     botId: {{ .Values.botId | quote }}
     {{- if eq .Values.certificate.issuer "cluster" }}
-    "use-http01-solver": "true"
+    use-http01-solver: "true"
     {{- end }}       
 spec:
   rules:
