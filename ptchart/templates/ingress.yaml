@@ -37,7 +37,7 @@ spec:
             {{- end }}
             port:
               number: 8081
-        path: /
+        path: {{ .Values.ingress.http.path }}
         pathType: ImplementationSpecific
   tls:
   - hosts:

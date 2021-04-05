@@ -47,6 +47,8 @@ ingress:
     header: {}
   # Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
   host: profit-trailer.domain.com
+  http:
+    path: "/"
     
 containers:
   # Container image for Profit Trailer
