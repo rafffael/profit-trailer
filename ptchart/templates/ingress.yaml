@@ -5,7 +5,7 @@ metadata:
     {{- if eq .Values.certificate.issuer "namespaced" }}
     cert-manager.io/issuer: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
     {{- else if eq .Values.certificate.issuer "cluster" }}
-    cert-manager.io/issuer: letsencrypt-{{ .Values.certificate.env }}
+    cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.certificate.env }}
     {{- end }}
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
   {{- if eq .Values.ingress.name "-" }}
@@ -42,7 +42,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.ingress.host }}
-    secretName: letsencrypt-{{ .Values.certificate.env }}-account-key
+    secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
 status:
   loadBalancer:
     ingress: 
