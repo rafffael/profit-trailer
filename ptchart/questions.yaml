@@ -95,7 +95,43 @@ questions:
 - variable: ingress.host
   default: "profit-trailer.domain.com"
   description: "Domain used to access the bot, this domain must exist in order for Lets Encrypt to work"
-  type: string
+  type: hostname
   required: true
   label: Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
   group: "Ingress settings"  
+
+- variable: containers.image
+  default: "lucasconde/profit-trailer:latest"
+  description: "Container image for Profit Trailer"
+  type: string
+  required: true
+  label: Container image for Profit Trailer
+  group: "Application settings"  
+- variable: resources.requests.cpu
+  default: "200m"
+  description: "Minimum requirements for Profit Trailer to run"
+  type: string
+  required: true
+  label: Minimum requirements for Profit Trailer to run
+  group: "Application settings"  
+- variable: resources.requests.memory
+  default: "256Mi"
+  description: "Minimum requirements for Profit Trailer to run"
+  type: string
+  required: true
+  label: Minimum requirements for Profit Trailer to run
+  group: "Application settings"    
+- variable: resources.limits.cpu
+  default: "700m"
+  description: "Maximum requirements for Profit Trailer to run"
+  type: string
+  required: true
+  label: Maximum requirements for Profit Trailer to run
+  group: "Application settings"  
+- variable: resources.limits.memory
+  default: "1024Mi"
+  description: "Maximum requirements for Profit Trailer to run"
+  type: string
+  required: true
+  label: Maximum requirements for Profit Trailer to run
+  group: "Application settings"    

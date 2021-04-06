@@ -60,11 +60,7 @@ resources:
   limits:
     cpu: 700m
     memory: 1024Mi
-  test:
-    limits:
-      cpu: 500m
-      memory: 768Mi
-
+    
 # Volume claim to be used
 volumeClaim:
   # Define the storage class to be used when creating the PVC
