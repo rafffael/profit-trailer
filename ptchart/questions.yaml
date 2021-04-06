@@ -5,7 +5,6 @@ questions:
   type: string
   required: true
   label: Namespace to host PT instances
-  show_subquestion_if: false
   group: "PT Basic Settings"
 - variable: environment
   default: "test"
@@ -13,7 +12,6 @@ questions:
   type: string
   required: true
   label: Environment that the POD will be deployed to
-  show_subquestion_if: false
   group: "PT Basic Settings"
 - variable: botId
   default: "001"
@@ -21,7 +19,6 @@ questions:
   type: string
   required: true
   label: Bot identification
-  show_subquestion_if: false
   group: "PT Basic Settings"
 - variable: exchange
   default: "binance"
@@ -29,7 +26,6 @@ questions:
   type: string
   required: true
   label: Exchange where the bot will trade
-  show_subquestion_if: false
   group: "PT Basic Settings"
 - variable: market
   default: "btc"
@@ -37,7 +33,6 @@ questions:
   type: string
   required: true
   label: Market which the bot will trade
-  show_subquestion_if: false
   group: "PT Basic Settings"
 
 - variable: certificate.issuer
@@ -47,19 +42,60 @@ questions:
   options:
     - "Issuer"
     - "ClusterIssuer"
-  required: true
+  required: false
   label: Market which the bot will trade
-  show_subquestion_if: false
   group: "Let's Encrypt Certificate"
+- variable: certificate.env
+  default: "staging"
+  description: "Type of certificate that needs to be created"
+  type: enum
+  options:
+    - "staging"
+    - "production"
+  required: false
+  label: Type of certificate that needs to be created
+  group: "Let's Encrypt Certificate"
+- variable: certificate.email
+  default: "email@dot.com"
+  description: "The email address that should receive emails from Lets Encrypt"
+  type: string
+  required: true
+  label: The email address that should receive emails from Lets Encrypt
+  group: "Let's Encrypt Certificate"  
 
-# subquestions:
-# - variable: persistence.size
-#   default: "10Gi"
-#   description: "WordPress Persistent Volume Size"
-#   type: string
-#   label: WordPress Volume Size
-# - variable: persistence.storageClass
-#   default: ""
-#   description: "If undefined or null, uses the default StorageClass. Default to null"
-#   type: storageclass
-#   label: Default StorageClass for WordPress
+- variable: service.name
+  default: "-"
+  description: "Service to expose the port for PT, change - to override the name"
+  type: string
+  required: false
+  label: Service to expose the port for PT, change - to override the name
+  group: "Deployment settings"  
+- variable: statefulset.name
+  default: "-"
+  description: "Statefulset to deploy PT"
+  type: string
+  required: false
+  label: Statefulset to deploy PT
+  group: "Deployment settings"  
+
+- variable: ingress.name
+  default: "-"
+  description: "Name of the ingress, change - to override the name"
+  type: string
+  required: false
+  label: Name of the ingress, change - to override the name
+  group: "Ingress settings"  
+- variable: ingress.class
+  default: "nginx"
+  description: "Ingress class of the application"
+  type: string
+  required: true
+  label: Ingress class of the application
+  group: "Ingress settings"  
+- variable: ingress.host
+  default: "profit-trailer.domain.com"
+  description: "Domain used to access the bot, this domain must exist in order for Lets Encrypt to work"
+  type: string
+  required: true
+  label: Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
+  group: "Ingress settings"  

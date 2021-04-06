@@ -30,7 +30,7 @@ service:
   # Service name, change - to override the name.
   name: "-"
 
-# Service to expose the port
+# Statefulset to deploy the application
 statefulset:
   # Statefulset name, change - to override the name.
   name: "-"
