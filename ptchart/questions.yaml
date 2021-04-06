@@ -1,0 +1,54 @@
+questions:
+- variable: namespace
+  default: "profit-trailer"
+  description: "Namespace to host PT instances"
+  type: string
+  required: true
+  label: Namespace to host PT instances
+  show_subquestion_if: false
+  group: "PT Basic Settings"
+- variable: environment
+  default: "test"
+  description: "Environment that the POD will be deployed to"
+  type: string
+  required: true
+  label: Environment that the POD will be deployed to
+  show_subquestion_if: false
+  group: "PT Basic Settings"
+- variable: botId
+  default: "001"
+  description: "Bot identification"
+  type: string
+  required: true
+  label: Bot identification
+  show_subquestion_if: false
+  group: "PT Basic Settings"
+- variable: exchange
+  default: "binance"
+  description: "Exchange where the bot will trade"
+  type: string
+  required: true
+  label: Exchange where the bot will trade
+  show_subquestion_if: false
+  group: "PT Basic Settings"
+- variable: market
+  default: "btc"
+  description: "Market which the bot will trade"
+  type: string
+  required: true
+  label: Market which the bot will trade
+  show_subquestion_if: false
+  group: "PT Basic Settings"
+
+
+# subquestions:
+# - variable: persistence.size
+#   default: "10Gi"
+#   description: "WordPress Persistent Volume Size"
+#   type: string
+#   label: WordPress Volume Size
+# - variable: persistence.storageClass
+#   default: ""
+#   description: "If undefined or null, uses the default StorageClass. Default to null"
+#   type: storageclass
+#   label: Default StorageClass for WordPress
