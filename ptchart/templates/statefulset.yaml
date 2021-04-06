@@ -25,7 +25,7 @@ spec:
         market: {{ .Values.market }}
         environment: {{ .Values.environment }}
         botId: {{ .Values.botId | quote }}
-        {{- if eq .Values.certificate.issuer "cluster" }}
+        {{- if eq .Values.certificate.issuer "ClusterIssuer" }}
         use-http01-solver: "true"
         {{- end }}   
     spec:

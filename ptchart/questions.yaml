@@ -40,6 +40,17 @@ questions:
   show_subquestion_if: false
   group: "PT Basic Settings"
 
+- variable: certificate.issuer
+  default: "ClusterIssuer"
+  description: "Identify if the certificate tupe will be Issuer or ClusterIssuer"
+  type: enum
+  options:
+    - "Issuer"
+    - "ClusterIssuer"
+  required: true
+  label: Market which the bot will trade
+  show_subquestion_if: false
+  group: "Let's Encrypt Certificate"
 
 # subquestions:
 # - variable: persistence.size
