@@ -135,3 +135,32 @@ questions:
   required: true
   label: Maximum requirements for Profit Trailer to run
   group: "Application settings"    
+
+- variable: volumeClaim.storageClassName.data
+  default: ""
+  description: "If undefined or null, uses the default StorageClass. Default to null"
+  type: storageclass
+  required: false
+  label: Default StorageClass for data folder for Profit Trailer
+  group: "Storage settings"    
+- variable: volumeClaim.storageClassName.log
+  default: ""
+  description: "If undefined or null, uses the default StorageClass. Default to null"
+  type: storageclass
+  required: false
+  label: Default StorageClass for log folder for Profit Trailer
+  group: "Storage settings"    
+- variable: volumeClaim.volumeClaim.dataStorage
+  default: "2Gi"
+  description: "Volume storage to claim for data storage"
+  type: string
+  required: true
+  label: Volume storage to claim for data storage
+  group: "Storage settings"    
+- variable: volumeClaim.volumeClaim.logStorage
+  default: "2Gi"
+  description: "Volume storage to claim for log storage"
+  type: string
+  required: true
+  label: Volume storage to claim for log storage
+  group: "Storage settings"         
