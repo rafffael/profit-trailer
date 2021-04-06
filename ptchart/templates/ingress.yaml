@@ -7,10 +7,6 @@ metadata:
     {{- else if eq .Values.certificate.issuer "cluster" }}
     cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.certificate.env }}
     {{- end }}
-    {{- if ne .Values.ingress.http.path "/" }}
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    {{- end }}
-
     kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
   {{- if eq .Values.ingress.name "-" }}
   name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
@@ -41,7 +37,7 @@ spec:
             {{- end }}
             port:
               number: 8081
-        path: {{ .Values.ingress.http.path }}
+        path: /
         pathType: ImplementationSpecific
   tls:
   - hosts:
