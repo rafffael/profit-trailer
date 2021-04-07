@@ -1,11 +1,4 @@
 questions:
-- variable: namespace
-  default: "profit-trailer"
-  description: "Namespace to host PT instances"
-  type: string
-  required: true
-  label: Namespace to host PT instances
-  group: "PT Basic Settings"
 - variable: environment
   default: "test"
   description: "Environment that the POD will be deployed to"
