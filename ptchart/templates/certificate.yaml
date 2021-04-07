@@ -1,4 +1,4 @@
-{{- if eq .Values.certificate.issuer "cluster" }}
+{{- if eq .Values.certificate.issuer "ClusterIssuer" }}
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -7,7 +7,7 @@ metadata:
 spec:
   secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
   issuerRef:
-    kind: ClusterIssuer
+    kind: {{ .Values.certificate.issuer }} 
     {{- if eq .Values.certificate.env "staging" }}
     name: letsencrypt-staging
     {{- else if eq .Values.certificate.env "production" }}

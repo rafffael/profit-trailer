@@ -19,7 +19,7 @@ environment: test
 # SSL certificate
 certificate:
   # Indicates if issuer is ClusterIssuer or Issuer (namespaced)
-  issuer: "cluster"
+  issuer: "ClusterIssuer"
   # SSL certificate for staging, to be used while testing. Possible values are production,staging
   env: staging
   # The email address that should receive emails from Lets Encrypt
@@ -30,7 +30,7 @@ service:
   # Service name, change - to override the name.
   name: "-"
 
-# Service to expose the port
+# Statefulset to deploy the application
 statefulset:
   # Statefulset name, change - to override the name.
   name: "-"
@@ -60,11 +60,7 @@ resources:
   limits:
     cpu: 700m
     memory: 1024Mi
-  test:
-    limits:
-      cpu: 500m
-      memory: 768Mi
-
+    
 # Volume claim to be used
 volumeClaim:
   # Define the storage class to be used when creating the PVC
