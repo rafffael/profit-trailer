@@ -25,8 +25,8 @@ spec:
         market: {{ .Values.market }}
         environment: {{ .Values.environment }}
         botId: {{ .Values.botId | quote }}
-        {{- if eq .Values.certificate.issuer "cluster" }}
-        "use-http01-solver": "true"
+        {{- if eq .Values.certificate.issuer "ClusterIssuer" }}
+        use-http01-solver: "true"
         {{- end }}   
     spec:
       containers:
@@ -37,13 +37,8 @@ spec:
             memory: {{ .Values.resources.requests.memory }} 
             cpu: {{ .Values.resources.requests.cpu }}
           limits:
-            {{- if eq .Values.environment "prod" }}
             memory: {{ .Values.resources.limits.memory }}
             cpu: {{ .Values.resources.limits.cpu }} 
-            {{- else }}
-            memory: {{ .Values.resources.test.limits.memory }}
-            cpu: {{ .Values.resources.test.limits.cpu }} 
-            {{- end }}
         ports:
         - containerPort: 80
           name: pt-port
