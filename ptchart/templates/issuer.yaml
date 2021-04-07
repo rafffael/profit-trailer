@@ -22,4 +22,4 @@ spec:
     - http01:
         ingress: 
           class: {{ .Values.ingress.class }}
- 
+{{-end }}
