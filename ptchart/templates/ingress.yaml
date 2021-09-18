@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    {{- if eq .Values.certificate.issuer "Issuer" }}
+    cert-manager.io/issuer: pt-certificate-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
+    {{- else if eq .Values.certificate.issuer "ClusterIssuer" }}
+    cert-manager.io/cluster-issuer: letsencrypt-{{ .Values.certificate.env }}
+    {{- end }}
+    kubernetes.io/ingress.class: {{ .Values.ingress.class }} 
+  {{- if eq .Values.ingress.name "-" }}
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-ingress
+  {{- else }}
+  name: {{ .Values.ingress.name }}
+  {{- end }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: {{ .Values.app }}
+    exchange: {{ .Values.exchange }}
+    market: {{ .Values.market }}
+    environment: {{ .Values.environment }}
+    botId: {{ .Values.botId | quote }}
+    {{- if eq .Values.certificate.issuer "ClusterIssuer" }}
+    use-http01-solver: "true"
+    {{- end }}       
+spec:
+  rules:
+  - host: {{ .Values.ingress.host }}
+    http:
+      paths:
+      - backend:
+          service:
+            {{- if eq .Values.ingress.name "-" }}
+            name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-service
+            {{- else }}
+            name: {{ .Values.service.name }}
+            {{- end }}
+            port:
+              number: 8081
+        path: /
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+      - {{ .Values.ingress.host }}
+    secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
+status:
+  loadBalancer:
+    ingress: 
+    - ip: 127.0.0.1
