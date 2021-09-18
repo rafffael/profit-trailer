@@ -1,0 +1,75 @@
+NAME: ptchart-1631929980
+LAST DEPLOYED: Fri Sep 17 22:53:03 2021
+NAMESPACE: profit-trailer
+STATUS: pending-install
+REVISION: 1
+TEST SUITE: None
+HOOKS:
+MANIFEST:
+---
+# Source: profit-trailer/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: binance-btc-test-001-workload
+  namespace: profit-trailer
+spec:
+  serviceName: "profit-trailer"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: profit-trailer
+      exchange: binance
+      market: btc
+      environment: test
+      botId: "001"   
+  template:
+    metadata:
+      labels:
+        app: profit-trailer
+        exchange: binance
+        market: btc
+        environment: test
+        botId: "001"
+        use-http01-solver: "true"   
+    spec:
+      containers:
+      - name: profit-trailer
+        image: lucasconde/profit-trailer:2.5.0
+        resources:
+          requests:
+            memory: 256Mi 
+            cpu: 200m
+          limits:
+            memory: 1024Mi
+            cpu: 700m 
+        ports:
+        - containerPort: 80
+          name: pt-port
+        volumeMounts:
+        - name: data
+          mountPath: /app/ProfitTrailer/data
+        - name: log
+          mountPath: /app/ProfitTrailer/logs
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: longhorn-pt 
+      resources:
+        requests:
+          storage: 2Gi
+  - metadata:
+      name: log
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: longhorn 
+      resources:
+        requests:
+          storage: 2Gi
+
+NOTES:
+Congrats, Profit Trailer has been installed/upgraded successfully!
+Access your Profit Trailer application by accesing this URL:
+https://profit-trailer.domain.com
