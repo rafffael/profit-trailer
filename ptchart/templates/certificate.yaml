@@ -16,4 +16,4 @@ spec:
   commonName: {{ .Values.ingress.host }}
   dnsNames:
   - {{ .Values.ingress.host }}
-{{- end }}  
+{{- end }}
