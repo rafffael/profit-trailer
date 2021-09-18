@@ -1,0 +1,66 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  {{- if eq .Values.statefulset.name "-" }}
+  name: {{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-workload
+  {{- else }}
+  name: {{ .Values.statefulset.name }}
+  {{- end }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceName: "profit-trailer"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+      exchange: {{ .Values.exchange }}
+      market: {{ .Values.market }}
+      environment: {{ .Values.environment }}
+      botId: {{ .Values.botId | quote }}   
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+        exchange: {{ .Values.exchange }}
+        market: {{ .Values.market }}
+        environment: {{ .Values.environment }}
+        botId: {{ .Values.botId | quote }}
+        {{- if eq .Values.certificate.issuer "ClusterIssuer" }}
+        use-http01-solver: "true"
+        {{- end }}   
+    spec:
+      containers:
+      - name: profit-trailer
+        image: {{ .Values.containers.image }}
+        resources:
+          requests:
+            memory: {{ .Values.resources.requests.memory }} 
+            cpu: {{ .Values.resources.requests.cpu }}
+          limits:
+            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.resources.limits.cpu }} 
+        ports:
+        - containerPort: 80
+          name: pt-port
+        volumeMounts:
+        - name: data
+          mountPath: /app/ProfitTrailer/data
+        - name: log
+          mountPath: /app/ProfitTrailer/logs
+  volumeClaimTemplates:
+  - metadata:
+      name: data
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: {{ .Values.volumeClaim.storageClassName.data }} 
+      resources:
+        requests:
+          storage: {{ .Values.volumeClaim.requests.dataStorage }}
+  - metadata:
+      name: log
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: {{ .Values.volumeClaim.storageClassName.log }} 
+      resources:
+        requests:
+          storage: {{ .Values.volumeClaim.requests.logStorage }}
