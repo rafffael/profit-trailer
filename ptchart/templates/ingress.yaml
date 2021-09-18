@@ -41,7 +41,7 @@ spec:
         pathType: ImplementationSpecific
   tls:
   - hosts:
-    - {{ .Values.ingress.host }}
+      - {{ .Values.ingress.host }}
     secretName: tls-{{ .Values.exchange }}-{{ .Values.market }}-{{ .Values.environment }}-{{ .Values.botId }}-{{ .Values.certificate.env }}
 status:
   loadBalancer:

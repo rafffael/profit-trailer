@@ -41,10 +41,6 @@ ingress:
   name: "-"
   # Ingress class used by K8s
   class: nginx
-  # Specific nginx configurations
-  nginx:
-    annotations: {}
-    header: {}
   # Domain used to access the bot, this domain must exist in order for Lets Encrypt to work
   host: profit-trailer.domain.com
     
