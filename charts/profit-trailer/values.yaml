@@ -1,4 +1,4 @@
-# Default values for ptchart.
+# Default values for profit-trailer.
 # Values that are have values equal - means that the name will be the concatenation of exchange, market and bot id
 # Ingress example:
 # exchange-market-environment-botId => binance-btc-prod-01-ingress

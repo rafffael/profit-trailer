@@ -28,8 +28,9 @@ Start a new container with a volume for your config files
 - Kubernetes
     
     If you already have created the namespace remove --create-namespace
-    
-    helm install --dry-run --debug --namespace <NAMESPACE_NAME> --create-namespace profit-trailer ./ptchart/ --set ingress.host=<YOUR_DOMAIN>
+    helm repo add profit-trailer https://connde.github.io/profit-trailer/
+    helm repo update
+    helm install --dry-run --debug --namespace <NAMESPACE_NAME> --create-namespace profit-trailer profit-trailer --set ingress.host=<YOUR_DOMAIN>
 
     Check values.yaml for default/possible values, by default certificate will be created using Let's Encrypt staging.
 
