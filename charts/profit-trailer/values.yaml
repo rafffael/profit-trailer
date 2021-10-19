@@ -46,7 +46,7 @@ ingress:
     
 containers:
   # Container image for Profit Trailer
-  image: lucasconde/profit-trailer:2.5.1
+  image: lucasconde/profit-trailer:2.5.2
 resources: 
   # Minimum requirements for Profit Trailer to run
   requests:
