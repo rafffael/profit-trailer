@@ -4,7 +4,7 @@ entries:
   - annotations:
       category: CryptoBot
     apiVersion: v2
-    appVersion: 2.5.9
+    appVersion: 2.5.10
     created: "2021-11-28T16:15:54.4060897-03:00"
     description: A Profit Trailer deploy using a Stateful deploy
     digest: bce78b34469791d716470cdffb237a4a2c472dd7d1fa326adfba626681109cb2
