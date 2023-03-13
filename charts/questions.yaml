@@ -94,7 +94,7 @@ questions:
   group: "Ingress settings"  
 
 - variable: containers.image
-  default: "lucasconde/profit-trailer:2.5.34"
+  default: "lucasconde/profit-trailer:2.5.35"
   description: "Container image for Profit Trailer"
   type: string
   required: true
