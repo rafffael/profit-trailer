@@ -56,7 +56,15 @@ resources:
   limits:
     cpu: 700m
     memory: 1024Mi
-    
+
+# Define is node affinity should be set
+useNodeAffinity: false 
+nodeAffinity:
+  key: kubernetes.io/hostname
+  values: 
+  #  - value.1
+  #  - value.2
+
 # Volume claim to be used
 volumeClaim:
   # Define the storage class to be used when creating the PVC

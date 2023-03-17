@@ -47,6 +47,16 @@ spec:
           mountPath: /app/ProfitTrailer/data
         - name: log
           mountPath: /app/ProfitTrailer/logs
+      {{- if eq .Values.useNodeAffinity true}}
+      affinity: 
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: {{ .Values.nodeAffinity.key }}
+                operator: In
+                values: {{ toJson .Values.nodeAffinity.values }}
+      {{- end }}
   volumeClaimTemplates:
   - metadata:
       name: data
