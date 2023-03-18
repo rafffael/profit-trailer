@@ -51,11 +51,11 @@ resources:
   # Minimum requirements for Profit Trailer to run
   requests:
     cpu: 200m
-    memory: 256Mi
+    memory: 512Mi
   # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 700m
-    memory: 1024Mi
+    memory: 1536Mi
 
 # Define is node affinity should be set
 useNodeAffinity: false 
