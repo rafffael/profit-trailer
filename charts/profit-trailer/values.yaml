@@ -46,7 +46,7 @@ ingress:
     
 containers:
   # Container image for Profit Trailer
-  image: lucasconde/profit-trailer:2.5.38
+  image: lucasconde/profit-trailer:2.5.39
 resources: 
   # Minimum requirements for Profit Trailer to run
   requests:
@@ -55,7 +55,7 @@ resources:
   # Maximum resources for Profit Trailer, setting more than the bot itself to have spare room
   limits:
     cpu: 700m
-    memory: 1536Mi
+    memory: 1024Mi
 
 # Define is node affinity should be set
 useNodeAffinity: false 
