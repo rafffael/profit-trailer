@@ -1,6 +1,6 @@
 FROM openjdk:8-jre
 
-ENV PT_VERSION=2.5.48
+ENV PT_VERSION=2.5.49
 ENV PT_DL=https://github.com/taniman/profit-trailer/releases/download/${PT_VERSION}/ProfitTrailer-${PT_VERSION}.zip
 
 VOLUME /app
