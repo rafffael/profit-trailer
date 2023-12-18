@@ -39,7 +39,7 @@ $ ./update-pt.sh
 Start a new container and point volume to pt dir
 
 ```bash
-$ docker run -d --restart=always --name profittrailer1 -p 8090:8081 -v /var/opt/profittrailer-docker/pt:/app/ProfitTrailer profit-trailer
+$ docker run -d --restart=always --name pt1 -p 8090:8081 -v /var/opt/profittrailer-docker/pt:/app/ProfitTrailer profittrailer
 ```
 
 Optionally setup Nginx as proxy and enable TLS
@@ -82,7 +82,7 @@ server {
 Stop Docker container
 
 ```bash
-$ docker stop profittrailer1
+$ docker stop pt1
 ```
 
 Run update-pt
@@ -94,7 +94,7 @@ $ ./update-pt.sh
 Start Docker container
 
 ```bash
-$ docker start profittrailer1
+$ docker start pt1
 ```
 
 ## Misc
@@ -102,13 +102,13 @@ $ docker start profittrailer1
 Check logs
 
 ```bash
-$ docker logs profittrailer1 -f
+$ docker logs pt1 -f
 ```
 
 Get shell in running container
 
 ```bash
-$ docker exec -it profittrailer1 sh
+$ docker exec -it pt1 sh
 ```
 
 
