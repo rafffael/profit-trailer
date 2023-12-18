@@ -15,31 +15,31 @@ For more information about ProfitTrailer :
 Build docker image for ProfitTrailer from dir with Dockerfile
 
 ```bash
-$ docker build -t profit-trailer .
+$ docker build -t profittrailer .
 ```
 
-Create new dir for ProfitTrailer files
+CD to pt dir
 
 ```bash
-$ mkdir /var/opt/profittrailer1
+$ cd pt/
 ```
 
-Copy update-pt.sh file to new dir and chmod
+chmod script
 
 ```bash
 $ chmod +x update-pt.sh
 ```
 
-Run update-pt
+Run update-pt, this will download and unzip latest version
 
 ```bash
 $ ./update-pt.sh
 ```
 
-Start a new container and point volume to new dir 
+Start a new container and point volume to pt dir
 
 ```bash
-$ docker run -d --restart=always --name profittrailer1 -p 8090:8081 -v /var/opt/dockerpt1:/app/ProfitTrailer profit-trailer
+$ docker run -d --restart=always --name profittrailer1 -p 8090:8081 -v /var/opt/profittrailer-docker/pt:/app/ProfitTrailer profit-trailer
 ```
 
 Optionally setup Nginx as proxy and enable TLS
